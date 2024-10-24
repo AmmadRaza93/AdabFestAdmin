@@ -1,0 +1,34 @@
+<h1 class="h3 mb-2 text-gray-800">Add Event Attendies</h1>
+<p class="mb-4"></p>
+
+<form [formGroup]="eventAttendeesForm" class="form" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card mb-4">
+        <div class="card-header">Event Attendies Details</div>
+        <div class="card-body">
+          <div class="form-row">
+            
+            <div class="form-group col-md-4">
+              <label class="small mb-1" for="inputUsername">Full Name</label>
+              <input type="text" class="form-control" id=fullName placeholder="" formControlName="fullName">
+            </div>
+            <div class="form-group col-md-4">
+              <label class="small mb-1" for="inputUsername">Email</label>
+              <input type="text" class="form-control" id=email placeholder="" formControlName="email">
+            </div>
+            <div class="form-group col-md-4">
+              <label class="small mb-1" for="inputUsername">Contact No</label>
+              <input type="text" class="form-control" id=phoneNo placeholder="" formControlName="phoneNo">
+            </div>
+            
+            
+          </div>
+          
+          <!-- Save changes button-->
+          <button class="btn btn-primary" type="submit">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,75 @@
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Confirm Attendee Report</h1>
+<p class="mb-4"></p>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="row">
+            <div class="col-md-6">
+                <h6 class="m-0 font-weight-bold text-orange">Confirm Event Details</h6>
+            </div>
+            <div class="col-md-6 text-right"> </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label>Select Date</label>
+                <ngbd-datepicker-range-popup></ngbd-datepicker-range-popup>
+            </div>
+ 
+            <div class="col-md-6 form-group text-right">
+                <button type="submit" class="btn btn-primary mt-4 mr-1" (click)="exportAsXLSX()">
+                <span>Export</span>
+              </button>
+                <button class="btn btn-primary mt-4" (click)="Filter()" type="submit">Search</button>
+            </div>
+        </div>
+        <div class="row">
+           
+
+              <!-- <div class="form-group col-md-4">
+                <label class="small mb-1" for="inputLocation">Select Attendee</label>
+                <ng-select [items]="Attendees" bindLabel="fullName" bindValue="attendeesID" [multiple]="false" placeholder="" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedEvents">
+                  <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                    <div class="ng-value" *ngFor="let item of items">
+                      <span class="ng-value-label">{{item.fullName}}</span>
+                      <span class="ng-value-icon right" style="border-left: 1px solid #000;" (click)="clear(item)" aria-hidden="true">×</span>
+                    </div>
+                  </ng-template>
+                </ng-select>
+              </div> -->
+
+
+        </div>
+        <div class="tile-body p-0 table-responsive ">
+          <table class="table table-striped">
+              <thead>
+                  <tr class="table-header">
+                      <th width="25%">Attendee Name</th>
+                      <th width="25%">Email</th>
+                      <th width="25%">Contact No</th>
+                      <th width="25%" >Status </th>
+                      
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of orderDetails">
+                      <td>{{item.fullName}} </td>
+                      <td>{{item.email}} </td>
+                      <td>{{item.phoneNo }} </td>
+                      <td>
+                          <ngb-highlight [ngClass]="{'btn-success': item.statusID === 104, 'btn-danger':item.statusID !== 104 }" class="btn btn-sm" [result]="item.statusID ==104?'Payment Approved':'Payment not Approved'" [term]="service.searchTerm">
+                          </ngb-highlight>
+                        </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+
+
+    </div>
+</div>

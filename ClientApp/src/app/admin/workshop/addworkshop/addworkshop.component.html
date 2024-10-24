@@ -1,0 +1,92 @@
+<h1 class="h3 mb-2 text-gray-800">Add Program</h1>
+<p class="mb-4"></p>
+
+<form [formGroup]="workshopForm" class="form" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card mb-4">
+        <div class="card-header">Program Details</div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label class="small mb-1" for="inputUsername">Name<em style="color: red;">*</em></label>
+                  <input type="text" class="form-control" id=Name placeholder="" formControlName="name">
+
+                  <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)" class="alert alert-danger">
+                    <div *ngIf="f.name.errors.required">
+                      Event Name is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="small mb-1" for="inputLastName">Pdf Link</label>
+                  <input type="text" class="form-control" id=pdfLink placeholder="" formControlName="pdfLink">
+                </div>
+              </div>
+              <div class="form-row">
+                <!-- <div class="form-group col-md-6">
+                  <label class="small mb-1" for="inputLastName">Link</label>
+                  <input type="text" class="form-control" id=link placeholder="" formControlName="link">
+                </div> -->
+                <div class="form-group col-md-6">
+                  <label class="small mb-1" for="inputLastName">Display Order</label>
+                  <input type="number" class="form-control" id=displayOrder placeholder="" formControlName="displayOrder">
+                </div>
+              </div>
+              <div class="form-row">
+                <!-- <div class="form-group col-md-6">
+                  <label class="small mb-1" for="inputLocation">Event Organizer<em style="color: red;">*</em></label>
+                  <ng-select [items]="OrganizerList" bindLabel="name" bindValue="organizerID" [multiple]="false" placeholder="" [ngModelOptions]="{standalone: true}" [(ngModel)]="organizerID" formControlName="organizerID">
+                    <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                      <div class="ng-value" *ngFor="let item of items">
+                        <span class="ng-value-label">{{item.name}}</span>
+                        <span class="ng-value-icon right" style="border-left: 1px solid #000;" (click)="clear(item)" aria-hidden="true">×</span>
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div> -->
+                <div class="form-group col-md-6">
+                  <label class="mb-1" for="inputLocation">Date<em style="color: red;">*</em></label>
+                  <input type="date" class="form-control" checked id="date" formControlName="date">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="Item Status">Start Time<em style="color: red;">*</em></label>
+                  <ngb-timepicker [(ngModel)]="startTime" [ngModelOptions]="{standalone: true}" [meridian]="true"></ngb-timepicker>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="Item Status">End Time<em style="color: red;">*</em></label>
+                  <ngb-timepicker [(ngModel)]="endTime" [ngModelOptions]="{standalone: true}" [meridian]="true"></ngb-timepicker>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label class="small mb-1" for="inputLocation">Description</label>
+                  <!-- <ejs-richtexteditor id='defaultRTE' [toolbarSettings]='tools' [quickToolbarSettings]='quickTools' formControlName="description">
+                  </ejs-richtexteditor> -->
+                  <angular-editor [config]="editorConfig" formControlName="description"></angular-editor>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-lg-4">
+                  <label for="Item Status">Status</label>
+                  <div class="custom-control custom-switch custom-switch-md">
+                    <input type="checkbox" class="custom-control-input" checked id="statusID" formControlName="statusID">
+                    <label class="custom-control-label" for="statusID"></label>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </div>
+            <div class="form-group col-md-4 text-center">
+              <app-imageupload></app-imageupload>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
