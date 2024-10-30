@@ -110,7 +110,8 @@ export class AddWorkshopComponent implements OnInit {
     this.f.name.setValue(obj.name);
     this.f.description.setValue(obj.description);
     this.f.statusID.setValue(obj.statusID === 1 ? true : false);
-    this.f.date.setValue(obj.date);
+    const dateOnly = obj.date ? obj.date.split('T')[0] : '';
+    this.f.date.setValue(dateOnly);
     this.f.pdfLink.setValue(obj.pdfLink);
     this.startTime = {
       hour: new Date("1/1/1900 " + obj.startTime).getHours() % 12 || 12,
