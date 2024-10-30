@@ -18,15 +18,6 @@ export class AdduserComponent implements OnInit {
   loading = false;
   loadingCustomer = false;
   ButtonText = "Save";
-  showPassword = false;
-  passwordFieldType = 'password';
-
-  // ... other component methods and lifecycle hooks
-
-  togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
-    this.passwordFieldType = this.showPassword ? 'text' : 'password';
-  }
 
   @ViewChild(ImageuploadComponent, { static: true }) imgComp;
   constructor(
@@ -49,12 +40,8 @@ export class AdduserComponent implements OnInit {
 
   private createForm() {
     this.userForm = this.formBuilder.group({
-      userName: [''],
-      email: ['', Validators.required, Validators.email],
-      image: [''],
-      address: [''],
-      contactNo: [''],
-      password: [''],
+      userName: ['', Validators.required],
+      contactNo: ['', Validators.required],
       statusID: [true],
       userID: 0,
     });
@@ -62,14 +49,9 @@ export class AdduserComponent implements OnInit {
 
   private editForm(obj) {
     this.f.userName.setValue(obj.userName);
-    this.f.email.setValue(obj.email);
-    this.f.address.setValue(obj.address);
     this.f.contactNo.setValue(obj.contactNo);
-    this.f.password.setValue(obj.password);
     this.f.userID.setValue(obj.userID);
-    this.f.image.setValue(obj.image);
     this.f.statusID.setValue(obj.statusID === 1 ? true : false);
-    this.imgComp.imageUrl = obj.image;
   }
 
   setSelectedCustomer() {
@@ -94,7 +76,6 @@ export class AdduserComponent implements OnInit {
     if (this.userForm.invalid) { return; }
     this.loading = true;
     this.f.statusID.setValue(this.f.statusID.value === true ? 1 : 2);
-    this.f.image.setValue(this.imgComp.imageUrl);
     if (parseInt(this.f.userID.value) === 0) {
       //Insert customer
       console.log(JSON.stringify(this.userForm.value));
